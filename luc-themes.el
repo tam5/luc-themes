@@ -80,18 +80,18 @@
     res))
 
 (defun luc-themes-get-hex (name)
-  "Return hex value of color in luc-pallete by NAME"
-  (car (map-elt luc-palette name)))
+  "Return hex value of color in luc-theme-pallete by NAME"
+  (car (map-elt luc-theme-palette name)))
 
 (defmacro define-luc-theme (name doc &optional opt-palette opt-faces &rest body)
   "Define new luc theme, using NAME as part of full luc-<name> theme name."
   (let* ((luc-theme-name (luc-themes--make-name name))
          (luc-theme-palette (if opt-palette
-                                   (luc-themes--merge-alist luc-palette opt-palette)
-                                 luc-palette))
+                                   (luc-themes--merge-alist luc-theme-palette opt-palette)
+                                 luc-theme-palette))
          (luc-theme-faces (if opt-faces
-                                   (luc-themes--merge-alist luc-faces opt-faces)
-                               luc-faces)))
+                                   (luc-themes--merge-alist luc-theme-faces opt-faces)
+                               luc-theme-faces)))
 
     `(autothemer-deftheme ,luc-theme-name ,doc
 
