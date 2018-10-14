@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'kaolin-themes)
+(require 'luc-themes)
 
 (define-kaolin-theme eclipse "Dark purple Kaolin theme variant."
   ;; Palette modification

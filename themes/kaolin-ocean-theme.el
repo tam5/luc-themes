@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'kaolin-themes)
+(require 'luc-themes)
 
 (define-kaolin-theme ocean "Dark blue Kaolin theme variant."
   ;; Palette modification

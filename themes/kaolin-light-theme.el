@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'kaolin-themes)
+(require 'luc-themes)
 
 (defgroup kaolin-light nil
   "Kaolin light theme options."

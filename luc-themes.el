@@ -1,4 +1,4 @@
-;;; kaolin-themes.el --- A set of eye pleasing themes  -*- lexical-binding: t; -*-
+;;; luc-themes.el --- A set of eye pleasing themes  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017-2018 ogdenwebb
 
@@ -81,7 +81,7 @@
 (require 'map)
 (require 'color)
 
-(require 'kaolin-themes-lib)
+(require 'luc-themes-lib)
 
 (defgroup kaolin-themes nil
   "Kaolin theme properties."
@@ -199,6 +199,6 @@
                  (or (and (file-directory-p dir) dir)
                      base))))
 
-(provide 'kaolin-themes)
+(provide 'luc-themes)
 
-;;; kaolin-themes.el ends here
+;;; luc-themes.el ends here

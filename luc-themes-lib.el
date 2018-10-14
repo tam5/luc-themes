@@ -1,4 +1,4 @@
-;;; kaolin-themes-lib.el --- Kaolin-themes library, provides common parts for the package  -*- lexical-binding: t; -*-
+;;; luc-themes-lib.el --- Kaolin-themes library, provides common parts for the package  -*- lexical-binding: t; -*-
 ;;; Commentary:
 
 ;;; Color order
@@ -1203,6 +1203,6 @@
 ;; (defconst kaolin-vars
 ;;   '())
 
-(provide 'kaolin-themes-lib)
+(provide 'luc-themes-lib)
 
 ;;; kaolin-themes-lib.el ends here

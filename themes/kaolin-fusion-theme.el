@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'kaolin-themes)
+(require 'luc-themes)
 
 (define-kaolin-theme fusion
   "Theme with dark gray background and syntax highlighting based on bright colors, such as crimson, pink, teal, amber and ultramarine."

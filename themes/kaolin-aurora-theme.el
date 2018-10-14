@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'kaolin-themes)
+(require 'luc-themes)
 
 (define-kaolin-theme aurora "Kaolin meets polar lights."
   ;; Palette modification

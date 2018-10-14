@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'kaolin-themes)
+(require 'luc-themes)
 
 (define-kaolin-theme mono-dark "Almost monochrome dark green Kaolin theme."
   ;; Palette modification

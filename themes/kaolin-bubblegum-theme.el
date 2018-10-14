@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'kaolin-themes)
+(require 'luc-themes)
 
 (define-kaolin-theme bubblegum "Kaolin colorful theme with dark blue background."
   ;; Palette modification
