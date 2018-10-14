@@ -1,10 +1,10 @@
-;;; kaolin-aurora-theme.el --- Kaolin meets polar lights.
+;;; luc-aurora-theme.el --- luc version of koalin-aurora-theme
 ;;; Commentary:
 
 ;;; Code:
 (require 'luc-themes)
 
-(define-kaolin-theme aurora "Kaolin meets polar lights."
+(define-luc-theme aurora "luc meets kaolin meets polar lights."
   ;; Palette modification
   (
    (aquamarine3 "#63E8C1")
@@ -47,7 +47,7 @@
 
    (dim-buffer bg0)
    ;; TODO:
-   (hl-line    (if kaolin-themes-hl-line-colored bg3 bg3))
+   (hl-line    bg3)
    (hl-indent  bg4)
    (selection  bg4)
    (pulse      bg4)
@@ -90,7 +90,7 @@
 
    (segment-active    gray3)
    (segment-inactive  gray3)
-   (evil-normal       teal1)
+   (evil-normal       teal0)
    (evil-insert       spring-green1)
    (evil-visual       orange1)
    (evil-replace      red1)
@@ -129,12 +129,12 @@
    (org-verbatim        (:inherit    'org-code))
    (org-quote           (:foreground blue4)))
 
-  (when kaolin-themes-git-gutter-solid
+  (when luc-themes-git-gutter-solid
     (custom-theme-set-faces
-     'kaolin-aurora
+     'luc-aurora
      `(git-gutter:added     ((t (:background ,diff-add :foreground ,diff-add))))
      `(git-gutter:modified  ((t (:background ,diff-mod :foreground ,diff-mod))))
      `(git-gutter:deleted   ((t (:background ,diff-rem :foreground ,diff-rem)))))))
 
 
-;;; kaolin-aurora-theme.el ends here
+;;; luc-aurora-theme.el ends here

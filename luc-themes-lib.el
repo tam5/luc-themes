@@ -52,7 +52,7 @@
 ;; Crimson #FF003F - 347
 
 ;;; Code:
-(defconst kaolin-palette
+(defconst luc-palette
   '(
     ;; Old black
     ;; (black0 "#181818")
@@ -419,10 +419,10 @@
 
 
     ;; Named color vars
-    (italic          kaolin-themes-italic)
-    (bold            kaolin-themes-bold)
-    (underline       kaolin-themes-underline)
-    (underline-style (if kaolin-themes-underline-wave 'wave 'line))
+    (italic          t)
+    (bold            t)
+    (underline       t)
+    (underline-style 'line)
 
     (fg0  white0)
     (fg1  white1)
@@ -441,7 +441,7 @@
 
     (hl         aquamarine3)
     (hl-mono    gray4)
-    (hl-line    (if kaolin-themes-hl-line-colored capri5 bg2))
+    (hl-line    capri5)
     (hl-indent  gray3)
     (selection  bg3)
     (pulse      spring-green6)
@@ -480,11 +480,7 @@
     (comment-alt teal2)
 
     ;; TODO:
-    (kaolin-comment
-      (pcase kaolin-themes-comments-style
-        ('normal comment)
-        ('color  comment-alt)
-        ('bright comment)))
+    (luc-comment comment)
 
     (keyword     teal1)
     (second-key  comment)
@@ -525,15 +521,15 @@
     (evil-operator     evil-normal)
     (evil-emacs        amber3)
 
-    (fringe        (if kaolin-themes-distinct-fringe bg2 bg1))
+    (fringe        (if luc-themes-distinct-fringe bg2 bg1))
     (win-border    bg3)
-    (line-num-bg   (if kaolin-themes-distinct-fringe bg2 bg1))
+    (line-num-bg   (if luc-themes-distinct-fringe bg2 bg1))
     (line-num-fg   gray3)
     (line-num-hl   gray9)
     (cursor        white0)
 
-    (company-scroll-bg (if kaolin-themes-distinct-company-scrollbar bg4 bg2))
-    (company-scroll-fg (if kaolin-themes-distinct-company-scrollbar line-num-hl bg4))
+    (company-scroll-bg bg4)
+    (company-scroll-fg line-num-hl)
 
     (swiper-bg   bg2)
     (ivy-bg      nil)
@@ -542,13 +538,13 @@
     (ivy3        amber3)
     (ivy4        violet3)))
 
-;; Predefined Kaolin face specifications
-(defconst kaolin-faces
+;; Predefined luc face specifications
+(defconst luc-faces
   '(
     ;; Font-lock
     (font-lock-builtin-face           (:foreground builtin))
-    (font-lock-comment-delimiter-face (:foreground kaolin-comment :italic kaolin-themes-italic-comments))
-    (font-lock-comment-face           (:foreground kaolin-comment :italic kaolin-themes-italic-comments))
+    (font-lock-comment-delimiter-face (:foreground luc-comment :italic t))
+    (font-lock-comment-face           (:foreground luc-comment :italic t))
     (font-lock-constant-face          (:foreground const))
     (font-lock-doc-face               (:foreground doc))
     (font-lock-function-name-face     (:foreground functions :bold bold))
@@ -1199,10 +1195,6 @@
     (swiper-match-face-4 (:background bg2 :foreground ivy4 :bold bold))
     (swiper-line-face    (:inherit 'hl-line))))
 
-;; Predefined Kaolin variables
-;; (defconst kaolin-vars
-;;   '())
-
 (provide 'luc-themes-lib)
 
-;;; kaolin-themes-lib.el ends here
+;;; luc-themes-lib.el ends here
