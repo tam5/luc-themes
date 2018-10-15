@@ -4,9 +4,9 @@
 ;;; Code:
 (require 'luc-themes)
 
-(define-luc-theme material "Material Theme."
+(define-luc-theme material-dark "Material Theme Dark."
   (
-    (background-color "#232729")
+    (background-color "#202020")
     (far-background-color "#232729")
     (foreground-color "#ffeeee")
     (highlight-line-color "#181d21")
