@@ -104,6 +104,8 @@
     ;; (show-paren-match-face (:background aqua :foreground "black"))
 
     ;; autocomplete
+    (company-preview (:foreground comment-color :background selection-color))
+    (company-preview-common (:foreground accent-1-color :background selection-color))
     (company-scrollbar-bg (:background highlight-line-color))
     (company-scrollbar-fg (:background subtle-color))
     (company-tooltip (:weight 'normal :foreground supporting-2-color :background highlight-line-color))
@@ -115,8 +117,6 @@
     
     ;; (company-echo ((())))
     ;; (company-echo-common ((())))
-    ;; (company-preview (:foreground comment :background inactive-gray))
-    ;; (company-preview-common (:foreground comment-color :background highlight-line-color)) ; same background as highlight-line
     ;; ;; (company-preview-search ((())))
     ;; (company-template-field (:background inactive-gray))
     ;; ;; (company-tooltip-mouse ((())))
