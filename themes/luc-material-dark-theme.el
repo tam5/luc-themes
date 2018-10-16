@@ -12,8 +12,8 @@
     (highlight-line-color "#191919")
     (selection-color "#353535")
     (cursor-color "#f3c404")
-    (subtle-color "#37454c")
-    (supporting-1-color "#78909c")
+    (subtle-color "#424242")
+    (supporting-1-color "#616161")
     (supporting-2-color "#d5e0e5")
 
     (comment-color "#464646")
