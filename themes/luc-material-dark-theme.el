@@ -6,17 +6,17 @@
 
 (define-luc-theme material-dark "Material Theme Dark."
   (
-    (background-color "#202020")
-    (far-background-color "#232729")
+    (background-color "#212121")
+    (far-background-color "#212121")
     (foreground-color "#ffeeee")
-    (highlight-line-color "#181d21")
-    (selection-color "#31454a")
+    (highlight-line-color "#191919")
+    (selection-color "#353535")
     (cursor-color "#f3c404")
     (subtle-color "#37454c")
     (supporting-1-color "#78909c")
     (supporting-2-color "#d5e0e5")
 
-    (comment-color "#546e7a")
+    (comment-color "#464646")
     (primitive-color "#aac4ce")
     (constant-color "#ff5370")
     (function-color "#7eaaff")

@@ -95,9 +95,12 @@
     (luc-modeline-git-ignored (:foreground comment-color))
 
     ;; sidebar
+    (neo-root-dir-face (:foreground supporting-2-color))
     (neo-file-link-face (:foreground supporting-1-color))
     (neo-dir-link-face (:foreground supporting-2-color))
-    (neo-root-dir-face (:foreground supporting-2-color))
+    (neo-dir-icon-face (:foreground supporting-1-color))
+
+    ;; (neo-expand-btn-face (:foreground supporting-2-color))
 
     ;; Parenthesis matching (built-in)
     (show-paren-match (:underline cursor-color))

@@ -6,15 +6,15 @@
 
 (define-luc-theme material "Material Theme."
   (
-    (background-color "#232729")
-    (far-background-color "#232729")
+    (background-color "#263238")
+    (far-background-color "#263238")
     (foreground-color "#ffeeee")
-    (highlight-line-color "#181d21")
-    (selection-color "#31454a")
+    (highlight-line-color "#1c252a")
+    (selection-color "#31464a")
     (cursor-color "#f3c404")
     (subtle-color "#37454c")
-    (supporting-1-color "#78909c")
-    (supporting-2-color "#d5e0e5")
+    (supporting-1-color "#597481")
+    (supporting-2-color "#afbdc4")
 
     (comment-color "#546e7a")
     (primitive-color "#aac4ce")
