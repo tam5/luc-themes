@@ -163,6 +163,7 @@
 
     (typescript-this-face (:foreground accent-1-color :slant 'italic))
     (typescript-access-modifier-face (:foreground keyword-color))
+    (tide-hl-identifier-face (:background nil :underline cursor-color))
 
     ;; markdown
     (markdown-header-face-1 (:inherit font-lock-function-name-face :weight 'bold :height 1.3 ))
