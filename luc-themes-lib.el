@@ -111,13 +111,14 @@
     (company-preview-common (:foreground accent-1-color :background selection-color))
     (company-scrollbar-bg (:background highlight-line-color))
     (company-scrollbar-fg (:background subtle-color))
-    (company-tooltip (:weight 'normal :foreground supporting-2-color :background highlight-line-color))
+    (company-tooltip (:weight 'normal :foreground supporting-2-color :background background-color))
     (company-tooltip-common (:weight 'bold :foreground accent-1-color :inherit 'company-tooltip))
-    (company-tooltip-selection (:weight 'bold :foreground foreground-color :background selection-color))
+    (company-tooltip-selection (:weight 'normal :foreground foreground-color :background selection-color))
     (company-tooltip-common-selection (:weight 'bold :foreground accent-1-color :inherit 'company-tooltip-selection))
     (company-tooltip-annotation (:weight 'normal :foreground function-color))
     (company-tooltip-annotation-selection (:weight 'normal :inherit 'company-tooltip-selection))
-    
+    (company-box-candidate (:foreground supporting-2-color))
+
     ;; (company-echo ((())))
     ;; (company-echo-common ((())))
     ;; ;; (company-preview-search ((())))
