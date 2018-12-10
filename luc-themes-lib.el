@@ -102,6 +102,26 @@
 
     ;; (neo-expand-btn-face (:foreground supporting-2-color))
 
+    ;; dired+
+   (diredp-deletion (:foregound error-color :inverse-video t))
+   (diredp-deletion-file-name (:foreground error-color))
+   (diredp-dir-heading (:foreground keyword-color :weight 'bold))
+   (diredp-dir-name (:foreground function-color :background nil))
+   (diredp-dir-priv (:foreground primitive-color :background nil))
+   (diredp-exec-priv (:foreground warning-color :background nil))
+   (diredp-executable-tag (:foreground type-color :background nil))
+   (diredp-file-name (:foreground foreground-color))
+   (diredp-file-suffix (:foreground foreground-color))
+   (diredp-flag-mark (:foreground supporting-2-color :inverse-video t))
+   (diredp-flag-mark-line (:background nil :foreground highlight-line-color))
+   (diredp-ignored-file-name (:foreground comment-color))
+   (diredp-link-priv (:background nil :foreground string-color))
+   (diredp-mode-line-flagged (:foreground accent-1-color))
+   (diredp-mode-line-marked (:foreground accent-2-color))
+   (diredp-no-priv (:background nil))
+   (diredp-number (:foreground subtle-color))
+   (diredp-symlink (:foreground variable-color))
+
     ;; Parenthesis matching (built-in)
     (show-paren-match (:underline cursor-color))
     ;; (show-paren-match-face (:background aqua :foreground "black"))
