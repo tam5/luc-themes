@@ -19,33 +19,6 @@
 ;; GNU General Public License for more details.
 ;;
 ;; This file is not part of GNU Emacs.
-;;
-;;; Commentary:
-;;
-;; TODO
-;;
-;; -------  This package includes the following themes  -------
-;;
-;;  * luc-material - 
-;;  * luc-material-dark - 
-;;  * luc-material-light - 
-;;  * luc-aurora - 
-;;
-;; -------  Configuration example  -------
-;;
-;;  (require 'luc-themes)
-;;  (load-theme 'luc-material)
-;;
-;;  ;; Apply icons customization for Luc themes, requires the all-the-icons package.
-;;  (luc-apply-icons)
-
-;;  ;; Or if you have use-package installed
-;;  (use-package luc-themes
-;;    :config
-;;    (load-theme 'luc-material t)
-;;    (luc-apply-icons))
-;;
-;;; Code:
 
 (eval-when-compile
   (require 'cl-lib))
@@ -111,11 +84,6 @@
                            ;; Provide theme
                            (provide-theme ',luc-theme-name))))
 
-;;;;;;;;;; ###autoload
-;; (defun kaolin-treemacs-theme ()
-;;   "Enable kaolin-themes treemacs theme with all-the-icons package."
-;;   (require 'kaolin-themes-treemacs))
-
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
   (let* ((base (file-name-directory load-file-name))
@@ -125,5 +93,4 @@
                      base))))
 
 (provide 'luc-themes)
-
 ;;; luc-themes.el ends here
