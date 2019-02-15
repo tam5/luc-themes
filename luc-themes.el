@@ -41,7 +41,6 @@
   "Enable contrast between buffer and rest of ui."
   :group 'luc-themes)
 
-
 (defun luc-activate-theme (theme &optional no-confirm no-enable)
   "Activate luc theme."
   (interactive
