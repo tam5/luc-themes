@@ -33,13 +33,37 @@
   "Luc theme properties."
   :group 'faces)
 
-(defcustom luc-themes-git-gutter-solid nil
-  "If t, display solid line to highlight git-gutter changes in fringe."
+;; (defcustom luc-themes-git-gutter-solid nil
+;;   "If t, display solid line to highlight git-gutter changes in fringe."
+;;   :group 'luc-themes)
+
+(defcustom luc-themes-contrast-mode nil
+  "Enable contrast between buffer and rest of ui."
   :group 'luc-themes)
 
-(defcustom luc-themes-distinct-fringe nil
-  "Enable distinct background for fringe and line numbers."
-  :group 'luc-themes)
+
+(defun luc-activate-theme (theme &optional no-confirm no-enable)
+  "Activate luc theme."
+  (interactive
+   (list
+    (intern (completing-read "Load luc theme: "
+			     (mapcar 'symbol-name
+				     (luc-available-themes))))
+    nil nil))
+  (load-theme theme t))
+
+(defun luc-available-themes ()
+  "Return a list of luc themes available for loading."
+  (let ((sym nil)
+        (themes '()))
+    (dolist (file (file-expand-wildcards
+		   (expand-file-name "themes/*-theme.el") t))
+      (setq file (file-name-nondirectory file))
+      (and (string-match "\\`\\(.+\\)-theme.el\\'" file)
+	   (setq sym (intern (match-string 1 file)))
+	   (custom-theme-name-valid-p sym)
+	   (push sym themes)))
+      (nreverse (delete-dups themes))))
 
 (defun luc-themes--make-name (sym)
   "Format luc-<sym> from SYM."
