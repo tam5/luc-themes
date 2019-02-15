@@ -6,6 +6,7 @@
 (defconst luc-theme-palette
   '(
     (background-color "#232729")
+    (background-color-contrast "#f3c404")
     (far-background-color "#232729")
     (foreground-color "#ffeeee")
     (highlight-line-color "#181d21")
@@ -14,6 +15,8 @@
     (subtle-color "#37454c")
     (supporting-1-color "#78909c")
     (supporting-2-color "#d5e0e5")
+
+    (fringe-background-color (if luc-themes-contrast-mode background-color-contrast background-color))
 
     (comment-color "#546e7a")
     (primitive-color "#aac4ce")
@@ -32,6 +35,13 @@
     (accent-1-color "#ff5370")
     (accent-2-color "#c3e88d")))
 
+(defun get-fringe-color ()
+  ""
+  "#ff0000")
+
+  ;; (if (luc-themes-contrast-mode) 'background-color
+    ;; 'background-color-contrast))
+
 ;; Predefined luc face specifications
 (defconst luc-theme-faces
   '(
@@ -43,7 +53,7 @@
     (border-glyph (nil))
     (vertical-border (:background background-color :foreground background-color))
     (linum (:background background-color :foreground subtle-color :slant 'normal :underline nil :distant-foreground subtle-color))
-    (fringe (:background background-color))
+    (fringe (:background fringe-background-color))
     (git-gutter-fr:modified (:foreground warning-color :weight 'ultra-light))
     (git-gutter-fr:added (:foreground success-color :weight 'ultra-light))
     (git-gutter-fr:deleted (:foreground error-color :weight 'ultra-light))
