@@ -228,7 +228,7 @@
     ;; (whitespace-empty (:foreground red :inverse-video t :underline nil))
     ;; (whitespace-line (:background nil :foreground red))
     ;; (whitespace-indentation (:background nil :foreground aqua))
-    ;; (whitespace-space (:background nil :foreground selection))
+    (whitespace-space (:background nil :foreground subtle-color))
     ;; (whitespace-newline (:background nil :foreground selection))
     ;; (whitespace-tab (:background nil :foreground selection))
     ;; (whitespace-hspace (:background nil :foreground selection))
