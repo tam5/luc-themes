@@ -41,28 +41,31 @@
   "Enable contrast between buffer and rest of ui."
   :group 'luc-themes)
 
+;;;###autoload
 (defun luc-activate-theme (theme &optional no-confirm no-enable)
   "Activate luc theme."
   (interactive
    (list
-    (intern (completing-read "Load luc theme: "
-			     (mapcar 'symbol-name
-				     (luc-available-themes))))
+    (intern (completing-read "Activate luc theme: "
+                             (mapcar 'symbol-name
+                                     (luc-available-themes))))
     nil nil))
   (load-theme theme t))
 
 (defun luc-available-themes ()
   "Return a list of luc themes available for loading."
-  (let ((sym nil)
+  (let ((dir (if load-file-name (file-name-directory load-file-name) default-directory))
+        (sym nil)
         (themes '()))
+    (message "place %s" (concat dir "*-themes.el"))
     (dolist (file (file-expand-wildcards
-		   (expand-file-name "themes/*-theme.el") t))
+                   (expand-file-name (concat dir "themes/*-theme.el")) t))
       (setq file (file-name-nondirectory file))
       (and (string-match "\\`\\(.+\\)-theme.el\\'" file)
-	   (setq sym (intern (match-string 1 file)))
-	   (custom-theme-name-valid-p sym)
-	   (push sym themes)))
-      (nreverse (delete-dups themes))))
+           (setq sym (intern (match-string 1 file)))
+           (custom-theme-name-valid-p sym)
+           (push sym themes)))
+    (nreverse (delete-dups themes))))
 
 (defun luc-themes--make-name (sym)
   "Format luc-<sym> from SYM."
@@ -83,11 +86,11 @@
   "Define new luc theme, using NAME as part of full luc-<name> theme name."
   (let* ((luc-theme-name (luc-themes--make-name name))
          (luc-theme-palette (if opt-palette
-                                   (luc-themes--merge-alist luc-theme-palette opt-palette)
-                                 luc-theme-palette))
+                                (luc-themes--merge-alist luc-theme-palette opt-palette)
+                              luc-theme-palette))
          (luc-theme-faces (if opt-faces
-                                   (luc-themes--merge-alist luc-theme-faces opt-faces)
-                               luc-theme-faces)))
+                              (luc-themes--merge-alist luc-theme-faces opt-faces)
+                            luc-theme-faces)))
 
     `(autothemer-deftheme ,luc-theme-name ,doc
 
@@ -102,10 +105,10 @@
                           ,luc-theme-faces
 
                           ;; Set vars or execute an arbitrary function body
-                           ,@body
+                          ,@body
 
-                           ;; Provide theme
-                           (provide-theme ',luc-theme-name))))
+                          ;; Provide theme
+                          (provide-theme ',luc-theme-name))))
 
 ;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
