@@ -33,13 +33,12 @@
   "Luc theme properties."
   :group 'faces)
 
-;; (defcustom luc-themes-git-gutter-solid nil
-;;   "If t, display solid line to highlight git-gutter changes in fringe."
-;;   :group 'luc-themes)
-
 (defcustom luc-themes-contrast-mode nil
   "Enable contrast between buffer and rest of ui."
   :group 'luc-themes)
+
+(defvar luc-available-themes-list nil
+  "List of available themes. See `luc-activate-theme'.")
 
 ;;;###autoload
 (defun luc-activate-theme (theme &optional no-confirm no-enable)
@@ -47,25 +46,9 @@
   (interactive
    (list
     (intern (completing-read "Activate luc theme: "
-                             (mapcar 'symbol-name
-                                     (luc-available-themes))))
+                             (mapcar 'symbol-name luc-available-themes-list)))
     nil nil))
   (load-theme theme t))
-
-(defun luc-available-themes ()
-  "Return a list of luc themes available for loading."
-  (let ((dir (if load-file-name (file-name-directory load-file-name) default-directory))
-        (sym nil)
-        (themes '()))
-    (message "place %s" (concat dir "*-themes.el"))
-    (dolist (file (file-expand-wildcards
-                   (expand-file-name (concat dir "themes/*-theme.el")) t))
-      (setq file (file-name-nondirectory file))
-      (and (string-match "\\`\\(.+\\)-theme.el\\'" file)
-           (setq sym (intern (match-string 1 file)))
-           (custom-theme-name-valid-p sym)
-           (push sym themes)))
-    (nreverse (delete-dups themes))))
 
 (defun luc-themes--make-name (sym)
   "Format luc-<sym> from SYM."
@@ -111,12 +94,28 @@
                           (provide-theme ',luc-theme-name))))
 
 ;;;###autoload
+(defun luc-add-themes-from-path (path)
+  "Add all available themes found in `PATH' to `luc-available-themes-list'.
+
+See `luc-activate-theme', for activating these themes."
+  (let ((themes '()))
+    (dolist (filepath (file-expand-wildcards
+                       (expand-file-name (concat path "*-theme.el")) t))
+      (let* ((file (file-name-nondirectory filepath))
+             (sym (when (string-match "\\`\\(.+\\)-theme.el\\'" file)
+                    (intern (match-string 1 file)))))
+        (when (custom-theme-name-valid-p sym)
+          (push sym themes))))
+    (setq luc-available-themes-list (nreverse (delete-dups themes)))))
+
+;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
   (let* ((base (file-name-directory load-file-name))
-         (dir (expand-file-name "themes/" base)))
-    (add-to-list 'custom-theme-load-path
-                 (or (and (file-directory-p dir) dir)
-                     base))))
+         (dir (expand-file-name "themes/" base))
+         (path (or (and (file-directory-p dir) dir)
+                   base)))
+    (luc-add-themes-from-path path)
+    (add-to-list 'custom-theme-load-path path)))
 
 (provide 'luc-themes)
 ;;; luc-themes.el ends here
