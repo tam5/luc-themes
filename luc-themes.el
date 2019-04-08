@@ -65,6 +65,21 @@
   "Return hex value of color in luc-theme-pallete by NAME"
   (car (map-elt luc-theme-palette name)))
 
+(defun luc-themes-apply-editor-bg ()
+  "Set the background color of the editor portion of the interface."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (unless (string-match-p "*" (buffer-name buffer))
+      ;; (let ((bg (luc-themes-get-hex 'foreground-color)))
+      (let ((bg "red"))
+        (message " i got %s" bg)
+        (with-current-buffer buffer
+          (face-remap-add-relative 'default '(:foreground "black" :background bg)))))))
+
+          ;; (setq-local face-remapping-alist '((default (:background bg)))))))))
+
+;; (setq tester (luc-themes-get-hex 'foreground-color))
+
 (defmacro define-luc-theme (name doc &optional opt-palette opt-faces &rest body)
   "Define new luc theme, using NAME as part of full luc-<name> theme name."
   (let* ((luc-theme-name (luc-themes--make-name name))
@@ -116,6 +131,8 @@ See `luc-activate-theme', for activating these themes."
                    base)))
     (luc-add-themes-from-path path)
     (add-to-list 'custom-theme-load-path path)))
+
+;; (add-hook 'buffer-list-update-hook 'luc-themes-apply-editor-bg)
 
 (provide 'luc-themes)
 ;;; luc-themes.el ends here

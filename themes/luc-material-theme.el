@@ -7,7 +7,7 @@
 (define-luc-theme material "Material Theme."
   (
     (background-color "#263238")
-    (far-background-color "#263238")
+    (far-background-color "#1c252a")
     (foreground-color "#ffeeee")
     (highlight-line-color "#1c252a")
     (selection-color "#31464a")

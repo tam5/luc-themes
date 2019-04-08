@@ -30,13 +30,16 @@
     (error-color "#ff5370")
 
     (accent-1-color "#ff5370")
-    (accent-2-color "#c3e88d")))
+    (accent-2-color "#c3e88d")
+
+    (bg (if luc-themes-contrast-mode far-background-color background-color))
+   ))
 
 ;; Predefined luc face specifications
 (defconst luc-theme-faces
   '(
     ;; interface
-    (default (:foreground foreground-color :background background-color))
+    (default (:foreground foreground-color :background bg))
     (cursor (:background cursor-color))
     (hl-line (:inverse-video nil :background highlight-line-color))
     (region (:background selection-color))
@@ -82,11 +85,11 @@
     (warning (:foreground warning-color))
 
     ;; mode line
-    (mode-line (:foreground foreground-color :background far-background-color))
+    (mode-line (:foreground foreground-color :background bg))
     (mode-line-buffer-id (:foreground foreground-color :background nil :weight 'bold))
     (mode-line-inactive (:inherit 'mode-line
                                   :foreground subtle-color
-                                  :background far-background-color :weight 'normal
+                                  :background bg :weight 'normal
                                   :box nil))
     (mode-line-emphasis (:foreground foreground-color :slant 'italic))
     (luc-modeline-position (:foreground comment-color))
