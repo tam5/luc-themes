@@ -65,6 +65,10 @@
   "Return hex value of color in luc-theme-pallete by NAME"
   (car (map-elt luc-theme-palette name)))
 
+;; (setq bg "red")
+;; (with-current-buffer (current-buffer)
+;;   (setq-local face-remapping-alist `((default (:background bg)))))
+
 (defun luc-themes-apply-editor-bg ()
   "Set the background color of the editor portion of the interface."
   (interactive)
