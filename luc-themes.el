@@ -65,24 +65,27 @@
   "Return hex value of color in luc-theme-pallete by NAME"
   (car (map-elt luc-theme-palette name)))
 
-;; (setq bg "red")
-;; (with-current-buffer (current-buffer)
-;;   (setq-local face-remapping-alist `((default (:background bg)))))
-
 (defun luc-themes-apply-editor-bg ()
   "Set the background color of the editor portion of the interface."
   (interactive)
-  (dolist (buffer (buffer-list))
-    (unless (string-match-p "*" (buffer-name buffer))
-      ;; (let ((bg (luc-themes-get-hex 'foreground-color)))
-      (let ((bg "red"))
-        (message " i got %s" bg)
+  (let ((bg (face-background 'default))
+        (contrast-bg "#1C252A"))
+    (dolist (buffer (buffer-list))
+      (let ((is-special-buffer (string-match-p "*" (buffer-name buffer))))
         (with-current-buffer buffer
-          (face-remap-add-relative 'default '(:foreground "black" :background bg)))))))
+          (if is-special-buffer (face-remap-add-relative 'fringe `(:background "red"))
+            (face-remap-add-relative 'default `(:background ,bg))))))))
 
-          ;; (setq-local face-remapping-alist '((default (:background bg)))))))))
+;; (dolist (buffer (buffer-list))
+;;   (unless (string-match-p "*" (buffer-name buffer))
+;;       (with-current-buffer buffer
+;;         (face-remap-add-relative 'fringe `(:background nil)))))
 
-;; (setq tester (luc-themes-get-hex 'foreground-color))
+      ;; (let ((bg (luc-themes-get-hex 'background-color)))
+
+ ;; (set-face-attribute 'fringe nil
+                      ;; :foreground (face-foreground 'default)
+                      ;; :background (face-background 'default))
 
 (defmacro define-luc-theme (name doc &optional opt-palette opt-faces &rest body)
   "Define new luc theme, using NAME as part of full luc-<name> theme name."
@@ -136,7 +139,7 @@ See `luc-activate-theme', for activating these themes."
     (luc-add-themes-from-path path)
     (add-to-list 'custom-theme-load-path path)))
 
-;; (add-hook 'buffer-list-update-hook 'luc-themes-apply-editor-bg)
+(add-hook 'find-file-hook 'luc-themes-apply-editor-bg)
 
 (provide 'luc-themes)
 ;;; luc-themes.el ends here
