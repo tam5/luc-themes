@@ -67,14 +67,22 @@
 
 (defun luc-themes-apply-editor-bg ()
   "Set the background color of the editor portion of the interface."
-  (interactive)
-  (let ((bg (face-background 'default))
-        (contrast-bg "#1C252A"))
+  (let ((bg (face-background 'luc-non-contrast-face)))
     (dolist (buffer (buffer-list))
       (let ((is-special-buffer (string-match-p "*" (buffer-name buffer))))
-        (with-current-buffer buffer
-          (if is-special-buffer (face-remap-add-relative 'fringe `(:background "red"))
-            (face-remap-add-relative 'default `(:background ,bg))))))))
+        (unless is-special-buffer
+          (with-current-buffer buffer
+            (face-remap-add-relative 'default `(:background ,bg))
+            (face-remap-add-relative 'linum `(:background ,bg))
+            (face-remap-add-relative 'linum-leading-zero `(:background ,bg :distant-foreground ,bg))
+            (face-remap-add-relative 'fringe `(:background ,bg))))))))
+
+            ;; (face-remap-add-relative 'mode-line `(:background ,contrast-bg))))))))
+
+          ;; (if is-special-buffer (face-remap-add-relative 'fringe `(:background ,contrast-bg :width 0))
+            ;; (face-remap-add-relative 'default `(:background ,bg))))))))
+
+(add-hook 'find-file-hook 'luc-themes-apply-editor-bg)
 
 ;; (dolist (buffer (buffer-list))
 ;;   (unless (string-match-p "*" (buffer-name buffer))
@@ -138,8 +146,6 @@ See `luc-activate-theme', for activating these themes."
                    base)))
     (luc-add-themes-from-path path)
     (add-to-list 'custom-theme-load-path path)))
-
-(add-hook 'find-file-hook 'luc-themes-apply-editor-bg)
 
 (provide 'luc-themes)
 ;;; luc-themes.el ends here

@@ -6,7 +6,7 @@
 (defconst luc-theme-palette
   '(
     (background-color "#232729")
-    (far-background-color "#232729")
+    (contrast-background-color (if luc-themes-contrast-mode "#181d21" background-color))
     (foreground-color "#ffeeee")
     (highlight-line-color "#181d21")
     (selection-color "#31454a")
@@ -30,24 +30,35 @@
     (error-color "#ff5370")
 
     (accent-1-color "#ff5370")
-    (accent-2-color "#c3e88d")
+    (accent-2-color "#c3e88d")))
 
-    (bg (if luc-themes-contrast-mode far-background-color background-color))
-   ))
+(defface luc-contrast-face
+  '((t (:inherit (default))))
+  "Face used for contrast mode."
+  :group 'luc
+  :group 'faces)
+
+(defface luc-non-contrast-face
+  '((t (:inherit (default))))
+  "Face used for contrast mode."
+  :group 'luc
+  :group 'faces)
 
 ;; Predefined luc face specifications
 (defconst luc-theme-faces
   '(
     ;; interface
-    (default (:foreground foreground-color :background bg))
+    (default (:foreground foreground-color :background contrast-background-color))
+    (luc-contrast-face (:background contrast-background-color))
+    (luc-non-contrast-face (:background background-color))
     (cursor (:background cursor-color))
     (hl-line (:inverse-video nil :background highlight-line-color))
     (region (:background selection-color))
     (border-glyph (nil))
-    (vertical-border (:background background-color :foreground highlight-line-color))
-    (linum (:background background-color :foreground subtle-color :slant 'normal :underline nil :distant-foreground subtle-color))
-    (linum-leading-zero (:background background-color :foreground background-color :distant-foreground background-color :underline nil))
-    (fringe (:background background-color))
+    (vertical-border (:background contrast-background-color :foreground highlight-line-color))
+    (linum (:background contrast-background-color :foreground subtle-color :slant 'normal :underline nil :distant-foreground subtle-color))
+    (linum-leading-zero (:background contrast-background-color :foreground contrast-background-color :distant-foreground contrast-background-color :underline nil))
+    (fringe (:background contrast-background-color))
     (git-gutter-fr:modified (:foreground warning-color :weight 'ultra-light))
     (git-gutter-fr:added (:foreground success-color :weight 'ultra-light))
     (git-gutter-fr:deleted (:foreground error-color :weight 'ultra-light))
@@ -85,11 +96,11 @@
     (warning (:foreground warning-color))
 
     ;; mode line
-    (mode-line (:foreground foreground-color :background bg))
+    (mode-line (:foreground foreground-color :background contrast-background-color))
     (mode-line-buffer-id (:foreground foreground-color :background nil :weight 'bold))
     (mode-line-inactive (:inherit 'mode-line
                                   :foreground subtle-color
-                                  :background bg :weight 'normal
+                                  :background contrast-background-color :weight 'normal
                                   :box nil))
     (mode-line-emphasis (:foreground foreground-color :slant 'italic))
     (luc-modeline-position (:foreground comment-color))
